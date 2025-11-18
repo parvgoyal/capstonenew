@@ -19,7 +19,8 @@ function App() {
 
   const verifyToken = async (token) => {
     try {
-      const response = await fetch('/api/auth/verify', {
+      const API_URL = process.env.REACT_APP_API_URL || '';
+      const response = await fetch(`${API_URL}/api/auth/verify`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }

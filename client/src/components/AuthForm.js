@@ -24,7 +24,8 @@ function AuthForm({ onAuthSuccess }) {
     setError('');
     setLoading(true);
 
-    const endpoint = isLogin ? '/api/auth/login' : '/api/auth/signup';
+    const API_URL = process.env.REACT_APP_API_URL || '';
+    const endpoint = `${API_URL}/api/auth/${isLogin ? 'login' : 'signup'}`;
     const payload = isLogin 
       ? { email: formData.email, password: formData.password }
       : formData;
